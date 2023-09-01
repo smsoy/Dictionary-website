@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dectionary</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        table{
+            width: 100%;
+        }
+        td,th{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" placeholder="search here.." id="myInput" onkeyup="searching()">
+    <table id="myTable">
+        <tr>
+            <th>item</th>
+            <th>word</th>
+            <th>tranlation</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>bag</td>
+            <td>شنطة</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>car</td>
+            <td>سيارة</td>
+        </tr>
+    </table>
+
+    <script>
+        function searching(){
+            var input, filter, table, tr, td, i, txtValue;
+            input= document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for(i=0;i<tr.length;i++){
+                td = tr[i].getElementsByTagName("td")[1];
+                if(td){
+                    txtValue = td.textContent || td.innerText;
+                    if(txtValue.toUpperCase().indexOf(filter) > -1){
+                        tr[i].style.display="";
+                     }
+                    else{
+                        tr[i].style.display="none";
+                    }
+                }
+
+            }
+        }
+    </script>
+    
+</body>
+</html>
